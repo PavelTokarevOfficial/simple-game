@@ -23,7 +23,9 @@ export default defineNuxtConfig({
 	vite: {
 		assetsInclude: ["**/*.fx"],
 		optimizeDeps: {
-			exclude: ["@babylonjs/havok"],
+			// Nuxt's virtual #app-manifest alias is generated at runtime and must
+			// not be pre-bundled by Vite as a regular node_modules import.
+			exclude: ["@babylonjs/havok", "nuxt"],
 		},
 		esbuild: {
 			tsconfigRaw: {
