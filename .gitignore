@@ -1,0 +1,23 @@
+# Dependencies
+/node_modules/
+
+# Nuxt build output
+/.nuxt/
+/.output/
+/dist/
+
+# Generated caches
+/.data/
+/.cache/
+/coverage/
+/.bjseditor/
+/assets/.export-cache.json
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Operating system files
+.DS_Store
