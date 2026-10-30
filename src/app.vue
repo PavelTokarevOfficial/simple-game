@@ -46,6 +46,8 @@ import { loadScene } from "babylonjs-editor-tools";
  */
 import { scriptsMap } from "@/scripts";
 
+const config = useRuntimeConfig()
+
 const canvasRef = ref<HTMLCanvasElement | null>(null);
 
 let engine: Engine | null = null;
@@ -57,7 +59,7 @@ async function handleLoad(engine: Engine, scene: Scene) {
 	scene.enablePhysics(new Vector3(0, -981, 0), new HavokPlugin(true, havok));
 
 	SceneLoaderFlags.ForceFullSceneLoadingForIncremental = true;
-	await loadScene("/scene/", "example.babylon", scene, scriptsMap, {
+	await loadScene(`${config.app.baseURL}scene/`, "example.babylon", scene, scriptsMap, {
 		quality: "high",
 	});
 
