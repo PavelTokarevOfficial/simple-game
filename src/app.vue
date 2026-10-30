@@ -77,16 +77,21 @@ onMounted(() => {
 		return;
 	}
 
+	const isMobile = /iPhone|iPad|Android/i.test(navigator.userAgent);
+
 	engine = new Engine(canvasRef.value, true, {
 		stencil: true,
-		antialias: true,
+		antialias: !isMobile,
 		audioEngine: true,
-		adaptToDeviceRatio: true,
+		adaptToDeviceRatio: false,
 		disableWebGL2Support: false,
 		useHighPrecisionFloats: true,
 		powerPreference: "high-performance",
 		failIfMajorPerformanceCaveat: false,
 	});
+
+	// Снижаем разрешение рендеринга на мобильных устройствах
+	engine.setHardwareScalingLevel(isMobile ? 1.5 : 1);
 
 	scene = new Scene(engine);
 
